@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+     {{website_data.page_title}}
+
+     {% if record and record.title %}
+       : {{record.title}}
+     {% elsif page and page.title %}
+       : {{page.title}}
+     {% elsif room and room.title %}
+       : {{room.title}}
+     {% endif %}
+    </title>
+
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+    {% if record and record.meta_description %}
+      <meta content="{{recrod.meta_description}}" name="description"/>
+    {% elsif page and page.meta_description %}
+      <meta content="{{page.meta_description}}" name="description"/>
+    {% elsif room and room.meta_description %}
+      <meta content="{{room.meta_description}}" name="description" />
+    {% else %}
+      <meta content="{{website_data.page_description}}" name="description" />
+    {% endif %}
+
+    <meta name="engine" content="new" />
+    <meta charset="utf-8" />
+    <meta content="{{website_data.page_keywords}}" name="keywords"/>
+    <meta content="en_UK" property="og:locale"/>
+    <meta content="website" property="og:type"/>
+    <meta content="{{website_data.page_title}}" property="og:title"/>
+    <meta content="{{website_data.page_description}}" property="og:description"/>
+    <meta content="{{website_data.page_title}}" property="og:site_name"/>
+
+    <style>
+      #loading-overlay{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: #fff;
+        background-size: 25%;
+        background-image: {{ website.data.logo }};
+        background-position: center center;
+        background-repeat: no-repeat;
+        opacity: 1;
+        transition: opacity 0.5s;
+        z-index: 100;
+      }
+      #loading-overlay.hidden{
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .hotel-name {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        width: 90%;
+        font-size: 48px;
+        text-transform: uppercase;
+        color: #6b635e;
+        font-family: sans-serif;
+        text-align: center;
+      }
+      {% if website_data.brand_color != '' %}
+        .header,
+        .content_box.red {
+          background-color: {{website_data.brand_color}} !important;
+        }
+        .btn,
+        .btn:hover,
+        .btn:focus{
+          background: {{website_data.brand_color}} !important;
+          background: -moz-linear-gradient(top, {{website_data.brand_color}} 0%, {{website_data.brand_color}} 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, {{website_data.brand_color}}), color-stop(100%, {{website_data.brand_color}}));
+          background: -webkit-linear-gradient(top, {{website_data.brand_color}} 0%, {{website_data.brand_color}} 100%);
+          background: -o-linear-gradient(top, {{website_data.brand_color}} 0%, {{website_data.brand_color}} 100%);
+          background: -ms-linear-gradient(top, {{website_data.brand_color}} 0%, {{website_data.brand_color}} 100%);
+          background: linear-gradient(to bottom, {{website_data.brand_color}} 0%, {{website_data.brand_color}} 100%);
+        }
+        .pager li a{
+          color: {{website_data.brand_color}} !important;
+          border-color: {{website_data.brand_color}} !important;
+        }
+        .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item > a:hover{
+          background: {{website_data.brand_color}} !important;
+        }
+        .flexslider.testi-home .flex-direction-nav li .flex-prev, .flexslider.testi-home .flex-direction-nav li .flex-next {
+          color: {{website_data.brand_color}};
+        }
+        .flexslider.testi-home .flex-direction-nav li .flex-prev:hover, .flexslider.testi-home .flex-direction-nav li .flex-next:hover,
+        .flexslider.testi-home .flex-direction-nav li .flex-prev:focus, .flexslider.testi-home .flex-direction-nav li .flex-next:focus {
+          background-color: {{website_data.brand_color}} !important;
+          border-color: {{website_data.brand_color}} !important;
+          color: #fff !important;
+        }
+        .flexslider.testi-home .flex-viewport ul.slides li .post_options a{
+          color: {{website_data.brand_color}} !important;
+        }
+        .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item > a:hover, .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item > a:active, .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item > a:focus ,
+        .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item.current-menu-item > a, .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item.sfHover > a,
+        .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item .sub-menu .menu-item > a:hover, .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item .sub-menu .menu-item > a:active, .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item .sub-menu .menu-item > a:focus,
+        .nav__primary .sf-menu > .menu-item > .sub-menu > .menu-item .sub-menu .menu-item.current-menu-item > a {
+          background-color: {{website_data.brand_color}} !important;
+        }
+      {% endif %}
+    </style>
+    <div id="loading-overlay">
+      {% unless website_data.logo == nil %}
+        <div class="hotel-name">{{website_data.header_text_1}}</div>
+      {% endunless %}
+    </div>
+    <noscript id="deferred-styles">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,500" type="text/css" />
+      <link rel="stylesheet" href="{{ '/css/template.css' | file_url: website_data.template }}" type="text/css" />
+    </noscript>
+    <body data-hotel="{{website_data.hotel_id}}" class="home page page-id-203 page-template page-template-page-home page-template-page-home-php">
+      <div id="fixer"></div>
+      <!-- Mobile navigation  -->
+
+      <main id="panel">
+        {% if  website_data.mobile_menu_fixed == true %}
+          <div class="navbar-fixed-top row xs-header visible-xs-block hidden-sm hidden-md hidden-lg mobile-nav">
+        {% else %}
+          <div class="row xs-header visible-xs-block hidden-sm hidden-md hidden-lg mobile-nav">
+        {% endif %}
+          <div class="row-fluid">
+            <div class="span4 text-center small-top-btn">
+              <button class="open-menu">
+                <i class="fa fa-bars"></i>
+                Menu
+              </button>
+            </div>
+            <div class="span4 text-center small-top-btn">
+              <a href="tel:{{website_data.phone_number}}">
+                <i class="fa fa-phone"></i>
+                Call
+              </a>
+            </div>
+            <div class="span4 text-center small-top-btn">
+              <a href="#map">
+                <i class="fa fa-map-marker"></i>
+                Map
+              </a>
+            </div>
+            <div class="span4 text-center reservation">
+              {% if website_data.booking_link == nil or website_data.booking_link == "" %}
+                <a href="{{ '/book' | link_to: website_data.link_object }}" class="reservation booking-form-link" style="background-color: {{website_data.booking_button_color}}">
+                  <i class="fa fa-calendar"></i>
+                  Reservation
+                </a>
+              {% else %}
+                <a href="{{website_data.booking_link}}" class="reservation" style="background-color: {{website_data.booking_button_color}}">
+                  <i class="fa fa-calendar"></i>
+                  Reservation
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {{content}}
+
+        {% include 'footer' %}
+      </main>
+
+      <!--  Booking form -->
+
+      {% include 'booking_form' %}
+
+
+      <script>
+        var loadDeferredStyles = function() {
+          var addStylesNode = document.getElementById("deferred-styles");
+          var replacement = document.createElement("div");
+          var fixer = document.getElementById("fixer");
+          replacement.innerHTML = addStylesNode.textContent;
+          document.body.appendChild(replacement)
+          addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+
+        var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+            webkitRequestAnimationFrame || msRequestAnimationFrame;
+
+        var hideElement = setInterval(function() {
+          if (fixer.clientHeight == 100) {
+            var overlay = document.getElementById('loading-overlay');
+            overlay.remove()
+            {% if website_data.map_center_lat and website_data.map_center_lng %}
+              if (typeof loadScript == 'function') {
+                loadScript();
+              }
+            {% endif %}
+            clearInterval(hideElement);
+          }
+        }, 200);
+
+        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
+
+    </body>
+    <script type="text/javascript" async src="{{ '/js/template.js' | file_url: website_data.template }}"> </script>
+  </head>
+</html>
