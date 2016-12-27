@@ -58,9 +58,17 @@
                       <dd>
                         {{website_data.email_address}}
                       </dd>
+                      <dt>Booking:</dt>
+                      <dd>
+                        {% if website_data.booking_link == nil or website_data.booking_link == '' %}
+                          <a href="{{ '/book' | link_to: website_data.link_object }}" class="booking-form-link">{{website_data.booking_button_text}}</a>
+                        {% else %}
+                          <a href="{{website_data.booking_link}}">{{website_data.booking_button_text}}</a>
+                        {% endif %}
+                      </dd>
                       <dt>Trip Advisor:</dt>
                       <dd>
-                        <a class="btn btn-success btn-sm" href="{{website_data.tripadvisor_listing_link}}">View Our Profile</a>
+                        <a href="{{website_data.tripadvisor_listing_link}}">View Our Profile</a>
                       </dd>
                       <dt>Address:</dt>
                       <dd>
