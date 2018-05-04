@@ -77,7 +77,7 @@
                   <div class="span8">
                     <h2>Get In Touch</h2>
                     <div class="wpcf7">
-                      <form action="/send_email" method="post" id="contact-form" class="wpcf7-form">
+                      <form id="contact-form" method="POST" action="{{ "/send_mail" | link_to: website_data.link_object }}" class="wpcf7-form">
                         <input name="part_a" type="hidden" value="{{website_data.rand_a}}"></input>
                         <input name="part_b" type="hidden" value="{{website_data.rand_b}}"></input>
                         <div class="row-fluid">
