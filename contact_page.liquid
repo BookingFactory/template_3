@@ -48,15 +48,15 @@
                       {{website_data.contact_area_description}}
                     </p>
                     <dl class="dl-horizontal">
-                      <dt>Phone:</dt>
+                      <dt>{{ 'Phone' | t: website_data.lang }}:</dt>
                       <dd>
                         {{website_data.phone_number}}
                       </dd>
-                      <dt>Email:</dt>
+                      <dt>{{ 'Email' | t: website_data.lang }}:</dt>
                       <dd>
                         {{website_data.email_address}}
                       </dd>
-                      <dt>Booking:</dt>
+                      <dt>{{ 'Booking' | t: website_data.lang }}:</dt>
                       <dd>
                         {% if website_data.booking_link == nil or website_data.booking_link == '' %}
                           <a href="{{ '/book' | link_to: website_data.link_object }}" class="booking-form-link">{{website_data.booking_button_text}}</a>
@@ -64,18 +64,18 @@
                           <a href="{{website_data.booking_link}}">{{website_data.booking_button_text}}</a>
                         {% endif %}
                       </dd>
-                      <dt>Trip Advisor:</dt>
+                      <dt>{{ 'Trip Advisor' | t: website_data.lang }}:</dt>
                       <dd>
-                        <a href="{{website_data.tripadvisor_listing_link}}">View Our Profile</a>
+                        <a href="{{website_data.tripadvisor_listing_link}}">{{ 'View Our Profile' | t: website_data.lang }}</a>
                       </dd>
-                      <dt>Address:</dt>
+                      <dt>{{ 'Address' | t: website_data.lang }}:</dt>
                       <dd>
                         {{website_data.address}}
                       </dd>
                     </dl>
                   </div>
                   <div class="span8">
-                    <h2>Get In Touch</h2>
+                    <h2>{{ 'Get In Touch' | t: website_data.lang }}</h2>
                     <div class="wpcf7">
                       <form id="contact-form" method="POST" action="{{ "/send_mail" | link_to: website_data.link_object }}" class="wpcf7-form">
                         <input name="part_a" type="hidden" value="{{website_data.rand_a}}"></input>
@@ -83,19 +83,19 @@
                         <div class="row-fluid">
                           <p class="span6 field">
                             <span class="wpcf7-form-control-wrap name">
-                              <input aria-invalid="false" aria-required="true" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" name="name" placeholder="Your Name" size="40" type="text"></input>
+                              <input aria-invalid="false" aria-required="true" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" name="name" placeholder="{{ 'Name' | t: website_data.lang }}" size="40" type="text"></input>
                             </span>
                           </p>
                           <p class="span6 field">
                             <span class="wpcf7-form-control-wrap email">
-                              <input aria-invalid="false" aria-required="true" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" name="email" placeholder="Your Email" size="40" type="email"></input>
+                              <input aria-invalid="false" aria-required="true" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" name="email" placeholder="{{ 'Email' | t: website_data.lang }}" size="40" type="email"></input>
                             </span>
                           </p>
                         </div>
                         <div class="row-fluid">
                           <p class="span12 field">
                             <span class="wpcf7-form-control-wrap your-message">
-                              <textarea aria-invalid="false" class="wpcf7-form-control wpcf7-textarea" cols="40" name="message" placeholder="Message:" rows="10"></textarea>
+                              <textarea aria-invalid="false" class="wpcf7-form-control wpcf7-textarea" cols="40" name="message" placeholder="{{ 'Message' | t: website_data.lang }}:" rows="10"></textarea>
                             </span>
                           </p>
                         </div>
@@ -111,7 +111,7 @@
                           <p class="span6 text-right">
                             <span class="input-btn btn btn-from-top">
                               <span>
-                                <input class="wpcf7-form-control wpcf7-submit" type="submit" value="Send Message">
+                                <input class="wpcf7-form-control wpcf7-submit" type="submit" value="{{ 'Send Message' | t: website_data.lang }}">
                                   <img alt="Sending ..." class="ajax-loader" src="/3/images/ajax-loader.gif"/>
                                   <div class="ajax-loader"></div>
                                 </input>
