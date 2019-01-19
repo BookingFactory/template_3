@@ -100,15 +100,10 @@
                           </p>
                         </div>
                         <div class="row-fluid">
-                          <p class="span6 field formula-row">
-                            <span class="formula">
-                              {{website_data.rand_a}} + {{website_data.rand_b}} =
-                            </span>
-                            <span class="wpcf7-form-control-wrap">
-                              <input class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" name="answer" placeholder="..." type="text"></input>
-                            </span>
-                          </p>
-                          <p class="span6 text-right">
+                          <div class="span6 field formula-row">
+                            <div class="g-recaptcha" data-sitekey="6LfJKIoUAAAAAESIKCuCb-QBRSsO5q2jhXTEZ73I"></div>
+                          </div>
+                          <div class="span6 text-right">
                             <span class="input-btn btn btn-from-top">
                               <span>
                                 <input class="wpcf7-form-control wpcf7-submit" type="submit" value="{{ 'Send Message' | t: website_data.lang }}">
@@ -117,7 +112,7 @@
                                 </input>
                               </span>
                             </span>
-                          </p>
+                          </div>
                         </div>
                       </form>
                     </div>

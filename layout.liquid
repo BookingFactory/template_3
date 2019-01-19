@@ -112,16 +112,21 @@
         }
       {% endif %}
     </style>
-    <div id="loading-overlay">
-      {% unless website_data.logo == nil %}
-        <div class="hotel-name">{{website_data.header_text_1}}</div>
-      {% endunless %}
-    </div>
-    <noscript id="deferred-styles">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,500" type="text/css" />
-      <link rel="stylesheet" href="{{ '/css/template.css' | file_url: website_data.template }}" type="text/css" />
-    </noscript>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+  </head>
+
     <body data-hotel="{{website_data.hotel_id}}" class="home page page-id-203 page-template page-template-page-home page-template-page-home-php">
+
+      <div id="loading-overlay">
+        {% unless website_data.logo == nil %}
+          <div class="hotel-name">{{website_data.header_text_1}}</div>
+        {% endunless %}
+      </div>
+      <noscript id="deferred-styles">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,500" type="text/css" />
+        <link rel="stylesheet" href="{{ '/css/template.css' | file_url: website_data.template }}" type="text/css" />
+      </noscript>
+
       <div id="fixer"></div>
       <!-- Mobile navigation  -->
 
@@ -209,5 +214,4 @@
     </body>
     {{website_data.ga_code}}
     <script type="text/javascript" async src="{{ '/js/template.js' | file_url: website_data.template }}"> </script>
-  </head>
 </html>
