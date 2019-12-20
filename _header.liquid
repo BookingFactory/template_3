@@ -207,7 +207,7 @@
                      <ul class="sub-menu">
                        {% for lang in website_data.langs %}
                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                           <a href="{{ '' | append: lang | link_to: website_data.link_object }}">
+                           <a href="{{ '' | append: lang | link_to_another_lang: website_data.link_object }}">
                              <span class="flag-icon flag-icon-{{lang}}"></span>
                               {{ lang | get_native_title }}
                            </a>
