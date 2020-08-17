@@ -25,6 +25,7 @@
                           <li class="menu-item menu-item-type-post_type menu-item-object-page">
                             <a href="{{ '' | link_to: website_data.link_object }}">{{link.title}}</a>
                           </li>
+
                         {% elsif link.value == 'rooms' %}
                           <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
                             <a href="" class="dropdown-toggl" data-toggle="dropdown">
@@ -51,6 +52,10 @@
                         {% elsif link.value == 'features' %}
                           <li class="menu-item menu-item-type-post_type menu-item-object-page">
                             <a href="{{ '#features' | link_to: website_data.link_object }}"> {{link.title}} </a>
+                          </li>
+                        {% elsif link.value == 'gallery' %}
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a href="{{'/gallery' | link_to: website_data.link_object}}">{{link.title}}</a>
                           </li>
                         {% elsif link.value == 'contacts' %}
                           <li class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -141,6 +146,10 @@
                             {% elsif link.value == 'features' %}
                               <li class="menu-item menu-item-type-post_type menu-item-object-page">
                                 <a href="{{ '#features' | link_to: website_data.link_object }}"> {{link.title}} </a>
+                              </li>
+                            {% elsif link.value == 'gallery' %}
+                              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                <a href="{{'/gallery' | link_to: website_data.link_object}}">{{link.title}}</a>
                               </li>
                             {% elsif link.value == 'contacts' %}
                               <li class="menu-item menu-item-type-post_type menu-item-object-page">
